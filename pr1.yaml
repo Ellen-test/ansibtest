@@ -1,0 +1,12 @@
+---
+- name: ls
+  host: testproject
+  task:
+    - name: ls home directory
+      raw: touch fileproject
+
+    - name: ls home directory
+      raw: ls
+      register: out
+
+
