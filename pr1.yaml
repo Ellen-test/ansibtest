@@ -1,12 +1,19 @@
 ---
 - name: ls
-  host: testproject
-  task:
-    - name: ls home directory
+  hosts: testproject
+  gather_facts: no
+  tasks:
+    - name: touch file
       raw: touch fileproject
 
+    - name: touch file
+      raw: echo `date` > fileproject 
+
     - name: ls home directory
-      raw: ls
+      raw: cat fileproject
       register: out
+
+    - debug: msg={{out.stdout_lines}}
+
 
 
